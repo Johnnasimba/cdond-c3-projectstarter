@@ -250,7 +250,7 @@ jobs:
   run-migrations:
     docker:
      # Docker image here that supports NodeJS
-     - image: circleci/node:13.8.0
+     - image: circleci/node:18.14.0
     steps:
       - checkout
       - run:
@@ -262,7 +262,7 @@ jobs:
       - run:
           name: Send migration results to kvdb
           command: |
-            if grep -q "has been executed successfully." ~/project/backend/migrations_dump.text
+            if grep -q "has been executed successfully." ~/project/backend/migrations_dump.txt
             then
             curl --insecure https://kvdb.io/YKNUhWcQ84k2dvnGArNnHk/migration_${CIRCLE_WORKFLOW_ID:0:7} -d '1'
             fi
