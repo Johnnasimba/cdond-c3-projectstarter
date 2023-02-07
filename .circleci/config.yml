@@ -41,7 +41,7 @@ commands:
     parameters:
       # Add parameter here
       workflow_id:
-          default: "${CIRCLE_WORKFLOW_ID:0:7}"
+          default: ${CIRCLE_WORKFLOW_ID:0:7}
           type: string
     steps:
       - run:
@@ -274,8 +274,8 @@ jobs:
             else 
               echo "No migrations are pending"
             fi
-      - destroy-environment
-      - revert-migrations
+      # - destroy-environment
+      # - revert-migrations
       # Here's where you will add some code to rollback on failure
 
 #   deploy-frontend:
