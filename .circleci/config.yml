@@ -296,7 +296,7 @@ jobs:
           fingerprints:
             - "3a:a3:18:3b:87:49:9a:70:fd:0e:91:d7:ad:de:f2:6e"
       - attach_workspace:
-        at: ~/
+          at: ~/
       - install_nodejs
       - install_awscli
       - install_ansible
