@@ -322,10 +322,6 @@ jobs:
             sudo npm install -g npm@latest
             rm -rf node_modules
             npm install
-            npm audit fix --force --audit-level=critical
-            npm audit fix --force --audit-level=critical
-            npm audit --audit-level=critical
-            npm audit fix
             npm run build
             aws s3 dist s3://udapeople-${CIRCLE_WORKFLOW_ID:0:7} --recursive
       - destroy-environment
@@ -353,7 +349,6 @@ jobs:
           command: |
             cd backend
             npm install
-            npm audit fix --audit-level=critical --force
       - run:
           name: Deploy backend
           command: |
