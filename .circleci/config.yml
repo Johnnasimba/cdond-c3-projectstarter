@@ -389,8 +389,8 @@ jobs:
            echo backend-${CIRCLE_WORKFLOW_ID:0:7}
            
            if curl -s $API_URL/api/status grep "ok"
-           then
-             exit 0
+             then
+               exit 0
            else
              exit 1
            fi
@@ -400,8 +400,8 @@ jobs:
          FRONTEND_WEBSITE=http://udapeople-${CIRCLE_WORKFLOW_ID:0:7}.s3-website-us-east-2.amazonaws.com
          echo ${FRONTEND_WEBSITE}
          if curl -s $FRONTEND_WEBSITE | grep "Welcome"
-         then
-           exit 0
+           then
+             exit 0
          else
            exit 1
          fi
