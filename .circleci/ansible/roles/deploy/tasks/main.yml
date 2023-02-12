@@ -19,8 +19,6 @@
     cd ~/backend-app/dist
     cd ../
     npm install
-    npm audit fix --audit-level=critical --force
-    npm audit fix
     npm run build
     sudo npm install forever -g
     sudo npm install ts-node -g
