@@ -295,6 +295,7 @@ jobs:
             apk add --update --no-cache ansible
             apk add --update --no-cache tar gzip
             apk add --update --no-cache nodejs npm
+            export PATH=$PATH:/usr/bin
             apk add --update --no-cache aws-cli curl
       - run:
           name: Deploy Backend
