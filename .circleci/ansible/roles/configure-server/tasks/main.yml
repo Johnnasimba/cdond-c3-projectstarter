@@ -1,20 +1,31 @@
 ---
-- name: "Add Node.js from source"
-  become: true
-  shell: |
-    curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-- name: "Install Node.js 14"
+- name: "update local apt repo."
   become: true
   apt:
-    name: ["nodejs"]
+    update_cache: yes
+
+- name: "upgrade apt packages"
+  become: true
+  apt:
+    upgrade: yes
+
+
+- name: "remove stale dependencies"
+  become: true
+  apt:
+    autoremove: yes
+
+- name: "install [nodejs and npm]."
+  become: true
+  apt:
+    name: ["nodejs", "npm"]
     state: latest
     update_cache: yes
-- name: "Install PM2 globally"
+
+- name: "install pm2"
+  become: true
   npm:
     name: pm2
     global: yes
-- name: "move env variables to /etc/profile.d/"
-  become: true
-  copy:
-      src: myenv.sh
-      dest: /etc/profile.d/
+    production: yes
+    state: present
