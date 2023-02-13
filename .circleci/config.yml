@@ -207,7 +207,6 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "3a:a3:18:3b:87:49:9a:70:fd:0e:91:d7:ad:de:f2:6e"
-            -
       - run:
           name: Install ansible, tar gzip aws-cli openssh
           command: |
