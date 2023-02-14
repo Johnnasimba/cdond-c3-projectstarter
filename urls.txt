@@ -1,0 +1,5 @@
+Git hub (URL01)
+1. https://github.com/Johnnasimba/cdond-c3-projectstarter/tree/john/auto-deploy
+
+S3 Bucket (URL02)
+http://udapeople-6a3872b.s3-website.us-east-2.amazonaws.com/#/employees
