@@ -408,18 +408,21 @@ jobs:
                 --stack-status-filter CREATE_COMPLETE --no-paginate --output text))
             echo Stack names: "${STACKS[@]}"
             export OldWorkflowID=$(curl --insecure https://kvdb.io/YKNUhWcQ84k2dvnGArNnHk/old_workflow_id)
-            echo Old Workflow ID: $OldWorkflowID
+            echo Old Workflow ID: ${OldWorkflowID}
       - run:
           name: Remove old stacks and files
           command: |
             export OldWorkflowID=$(curl --insecure https://kvdb.io/YKNUhWcQ84k2dvnGArNnHk/old_workflow_id)
             echo Old Workflow ID: $OldWorkflowID
-            if [[ "${STACKS[@]}" =~ "${OldWorkflowID}" ]]
-            then
-              aws s3 rm "s3://udapeople-${OldWorkflowID}" --recursive
-              aws cloudformation delete-stack --stack-name "udapeople-backend-${OldWorkflowID}"
-              aws cloudformation delete-stack --stack-name "udapeople-frontend-${OldWorkflowID}"
-            fi
+            for stack in "${STACKS[@]}"
+            do
+              if [[ "${stack}" == "udapeople-backend-${OldWorkflowID}" || "${stack}" == "udapeople-frontend-${OldWorkflowID}" ]]
+              then
+                aws s3 rm "s3://udapeople-${OldWorkflowID}" --recursive
+                aws cloudformation delete-stack --stack-name "udapeople-backend-${OldWorkflowID}"
+                aws cloudformation delete-stack --stack-name "udapeople-frontend-${OldWorkflowID}"
+              fi
+            done
 
 workflows:
   default:
