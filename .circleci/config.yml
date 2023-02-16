@@ -409,12 +409,12 @@ jobs:
                 --query "StackSummaries[*].StackName" \
                 --stack-status-filter CREATE_COMPLETE --no-paginate --output text))
             echo Stack names: "${STACKS[@]}"
-            export OldWorkflowID=$(curl --insecure https://kvdb.io/YKNUhWcQ84k2dvnGArNnHk/old_workflow_id)
+            export OldWorkflowID=$(curl --insecure https://kvdb.io/YKNUhWcQ84k2dvnGArNnHk/old_workflow_id/value)
             echo Old Workflow ID: ${OldWorkflowID}
       - run:
           name: Remove old stacks and files
           command: |
-            export OldWorkflowID=$(curl --insecure https://kvdb.io/YKNUhWcQ84k2dvnGArNnHk/old_workflow_id)
+            export OldWorkflowID=$(curl --insecure https://kvdb.io/YKNUhWcQ84k2dvnGArNnHk/old_workflow_id/value)
             echo Old Workflow ID: $OldWorkflowID
             for stack in "${STACKS[@]}"
               do
